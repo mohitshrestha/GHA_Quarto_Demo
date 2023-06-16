@@ -21,6 +21,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -143,33 +177,53 @@ ul.task-list li input[type="checkbox"] {
 
 <section id="import-librariespackages" class="level2">
 <h2 class="anchored" data-anchor-id="import-librariespackages">Import Libraries/Packages</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(googlesheets4)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gt)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 </section>
 <section id="import-data" class="level2">
 <h2 class="anchored" data-anchor-id="import-data">Import Data</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># The data is publicly available so we don't need to authenticate</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">gs4_deauth</span>()</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>survey_data <span class="ot">&lt;-</span> <span class="fu">read_sheet</span>(<span class="st">"https://docs.google.com/spreadsheets/d/13kfPtyQP1xmL4Rn6rfJHgJcAblfH7pxS5RvdmGe6BHg/edit#gid=564559734"</span>)</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>survey_data <span class="sc">|&gt;</span> </span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">write_rds</span>(<span class="st">"survey_data.rds"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 </section>
 <section id="generate-report" class="level2">
 <h2 class="anchored" data-anchor-id="generate-report">Generate Report</h2>
-<p>Report last updated r now().</p>
+<p>Report last updated 2023-06-15 19:24:24.</p>
 <div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">gs4_deauth</span>()</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>survey_data <span class="ot">&lt;-</span> <span class="fu">read_sheet</span>(<span class="st">"https://docs.google.com/spreadsheets/d/13kfPtyQP1xmL4Rn6rfJHgJcAblfH7pxS5RvdmGe6BHg/edit?usp=sharing"</span>)</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>survey_data <span class="sc">%&gt;%</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gt</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 
-<div id="keemvixygg" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#keemvixygg table {
+<div id="uytardarib" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#uytardarib table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#keemvixygg thead, #keemvixygg tbody, #keemvixygg tfoot, #keemvixygg tr, #keemvixygg td, #keemvixygg th {
+#uytardarib thead, #uytardarib tbody, #uytardarib tfoot, #uytardarib tr, #uytardarib td, #uytardarib th {
   border-style: none;
 }
 
-#keemvixygg p {
+#uytardarib p {
   margin: 0;
   padding: 0;
 }
 
-#keemvixygg .gt_table {
+#uytardarib .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -195,12 +249,12 @@ ul.task-list li input[type="checkbox"] {
   border-left-color: #D3D3D3;
 }
 
-#keemvixygg .gt_caption {
+#uytardarib .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#keemvixygg .gt_title {
+#uytardarib .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -212,7 +266,7 @@ ul.task-list li input[type="checkbox"] {
   border-bottom-width: 0;
 }
 
-#keemvixygg .gt_subtitle {
+#uytardarib .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -224,7 +278,7 @@ ul.task-list li input[type="checkbox"] {
   border-top-width: 0;
 }
 
-#keemvixygg .gt_heading {
+#uytardarib .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -236,13 +290,13 @@ ul.task-list li input[type="checkbox"] {
   border-right-color: #D3D3D3;
 }
 
-#keemvixygg .gt_bottom_border {
+#uytardarib .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#keemvixygg .gt_col_headings {
+#uytardarib .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -257,7 +311,7 @@ ul.task-list li input[type="checkbox"] {
   border-right-color: #D3D3D3;
 }
 
-#keemvixygg .gt_col_heading {
+#uytardarib .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -277,7 +331,7 @@ ul.task-list li input[type="checkbox"] {
   overflow-x: hidden;
 }
 
-#keemvixygg .gt_column_spanner_outer {
+#uytardarib .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -289,15 +343,15 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 4px;
 }
 
-#keemvixygg .gt_column_spanner_outer:first-child {
+#uytardarib .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#keemvixygg .gt_column_spanner_outer:last-child {
+#uytardarib .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#keemvixygg .gt_column_spanner {
+#uytardarib .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -309,11 +363,11 @@ ul.task-list li input[type="checkbox"] {
   width: 100%;
 }
 
-#keemvixygg .gt_spanner_row {
+#uytardarib .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#keemvixygg .gt_group_heading {
+#uytardarib .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -339,7 +393,7 @@ ul.task-list li input[type="checkbox"] {
   text-align: left;
 }
 
-#keemvixygg .gt_empty_group_heading {
+#uytardarib .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -354,15 +408,15 @@ ul.task-list li input[type="checkbox"] {
   vertical-align: middle;
 }
 
-#keemvixygg .gt_from_md > :first-child {
+#uytardarib .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#keemvixygg .gt_from_md > :last-child {
+#uytardarib .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#keemvixygg .gt_row {
+#uytardarib .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -381,7 +435,7 @@ ul.task-list li input[type="checkbox"] {
   overflow-x: hidden;
 }
 
-#keemvixygg .gt_stub {
+#uytardarib .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -394,7 +448,7 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 5px;
 }
 
-#keemvixygg .gt_stub_row_group {
+#uytardarib .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -408,15 +462,15 @@ ul.task-list li input[type="checkbox"] {
   vertical-align: top;
 }
 
-#keemvixygg .gt_row_group_first td {
+#uytardarib .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#keemvixygg .gt_row_group_first th {
+#uytardarib .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#keemvixygg .gt_summary_row {
+#uytardarib .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -426,16 +480,16 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 5px;
 }
 
-#keemvixygg .gt_first_summary_row {
+#uytardarib .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#keemvixygg .gt_first_summary_row.thick {
+#uytardarib .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#keemvixygg .gt_last_summary_row {
+#uytardarib .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -445,7 +499,7 @@ ul.task-list li input[type="checkbox"] {
   border-bottom-color: #D3D3D3;
 }
 
-#keemvixygg .gt_grand_summary_row {
+#uytardarib .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -455,7 +509,7 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 5px;
 }
 
-#keemvixygg .gt_first_grand_summary_row {
+#uytardarib .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -465,7 +519,7 @@ ul.task-list li input[type="checkbox"] {
   border-top-color: #D3D3D3;
 }
 
-#keemvixygg .gt_last_grand_summary_row_top {
+#uytardarib .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -475,11 +529,11 @@ ul.task-list li input[type="checkbox"] {
   border-bottom-color: #D3D3D3;
 }
 
-#keemvixygg .gt_striped {
+#uytardarib .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#keemvixygg .gt_table_body {
+#uytardarib .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -488,7 +542,7 @@ ul.task-list li input[type="checkbox"] {
   border-bottom-color: #D3D3D3;
 }
 
-#keemvixygg .gt_footnotes {
+#uytardarib .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -502,7 +556,7 @@ ul.task-list li input[type="checkbox"] {
   border-right-color: #D3D3D3;
 }
 
-#keemvixygg .gt_footnote {
+#uytardarib .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -511,7 +565,7 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 5px;
 }
 
-#keemvixygg .gt_sourcenotes {
+#uytardarib .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -525,7 +579,7 @@ ul.task-list li input[type="checkbox"] {
   border-right-color: #D3D3D3;
 }
 
-#keemvixygg .gt_sourcenote {
+#uytardarib .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -533,63 +587,63 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 5px;
 }
 
-#keemvixygg .gt_left {
+#uytardarib .gt_left {
   text-align: left;
 }
 
-#keemvixygg .gt_center {
+#uytardarib .gt_center {
   text-align: center;
 }
 
-#keemvixygg .gt_right {
+#uytardarib .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#keemvixygg .gt_font_normal {
+#uytardarib .gt_font_normal {
   font-weight: normal;
 }
 
-#keemvixygg .gt_font_bold {
+#uytardarib .gt_font_bold {
   font-weight: bold;
 }
 
-#keemvixygg .gt_font_italic {
+#uytardarib .gt_font_italic {
   font-style: italic;
 }
 
-#keemvixygg .gt_super {
+#uytardarib .gt_super {
   font-size: 65%;
 }
 
-#keemvixygg .gt_footnote_marks {
+#uytardarib .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#keemvixygg .gt_asterisk {
+#uytardarib .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#keemvixygg .gt_indent_1 {
+#uytardarib .gt_indent_1 {
   text-indent: 5px;
 }
 
-#keemvixygg .gt_indent_2 {
+#uytardarib .gt_indent_2 {
   text-indent: 10px;
 }
 
-#keemvixygg .gt_indent_3 {
+#uytardarib .gt_indent_3 {
   text-indent: 15px;
 }
 
-#keemvixygg .gt_indent_4 {
+#uytardarib .gt_indent_4 {
   text-indent: 20px;
 }
 
-#keemvixygg .gt_indent_5 {
+#uytardarib .gt_indent_5 {
   text-indent: 25px;
 }
 </style>
