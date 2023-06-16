@@ -42,7 +42,7 @@ survey_data |>
 
 ## Generate Report
 
-Report last updated `r now()`.
+Report last updated `r now("America/Los_Angeles")`.
 
 ```{r}
 #| code-fold: true
