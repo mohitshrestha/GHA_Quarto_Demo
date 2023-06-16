@@ -6,6 +6,8 @@ website:
   title: "GitHub Actions for Quarto Demo"
   navbar:
     left:
+      - href: index.qmd
+        text: Home
       - href: import_data_and_generate_report.qmd
         text: Import Data and Generate Report
 
