@@ -1,11 +1,52 @@
 ---
-title: "GitHub Actions for Quarto Demo"
+title: "Import Data and Generate Report"
+author: "Mohit Shrestha"
+format: 
+  html:
+    code-fold: true
+    code-tools: true
+
+editor: visual
+execute: 
+  echo: false
+  warning: false
+  message: false
 ---
 
-This is a Quarto website.
-
-To learn more about Quarto websites visit <https://quarto.org/docs/websites>.
+## Import Libraries/Packages
 
 ```{r}
-1 + 1
+#| eval: true
+
+library(tidyverse)
+library(googlesheets4)
+library(gt)
+```
+
+## Import Data
+
+```{r filename="import_data.R"}
+#| eval: true
+
+# The data is publicly available so we don't need to authenticate
+gs4_deauth()
+
+survey_data <- read_sheet("https://docs.google.com/spreadsheets/d/13kfPtyQP1xmL4Rn6rfJHgJcAblfH7pxS5RvdmGe6BHg/edit#gid=564559734")
+
+survey_data |> 
+    write_rds("survey_data.rds")
+```
+
+## Generate Report
+
+Report last updated `r now()`.
+
+```{r}
+# The data is publicly available so we don't need to authenticate
+gs4_deauth()
+
+survey_data <- read_sheet("https://docs.google.com/spreadsheets/d/13kfPtyQP1xmL4Rn6rfJHgJcAblfH7pxS5RvdmGe6BHg/edit?usp=sharing")
+
+survey_data %>%
+  gt()
 ```
