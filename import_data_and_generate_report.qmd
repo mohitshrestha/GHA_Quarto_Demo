@@ -3,8 +3,8 @@ title: "Import Data and Generate Report"
 author: "Mohit Shrestha"
 format: 
   html:
-    code-tools:
-      source: https://github.com/mohitshrestha/GHA_Quarto_Demo/blob/main/import_data_generate_report.qmd
+    code-fold: true
+    code-tools: true
 
 editor: visual
 execute: 
@@ -16,6 +16,8 @@ execute:
 ## Import Libraries/Packages
 
 ```{r}
+#| eval: true
+
 library(tidyverse)
 library(googlesheets4)
 library(gt)
@@ -23,7 +25,9 @@ library(gt)
 
 ## Import Data
 
-```{r}
+```{r filename="import_data.R"}
+#| eval: true
+
 # The data is publicly available so we don't need to authenticate
 gs4_deauth()
 
