@@ -42,7 +42,7 @@ survey_data |>
 
 ## Generate Report
 
-Report last updated `r now("America/Los_Angeles")`.
+Report last updated `r now(tzone = "America/Los_Angeles")`.
 
 ```{r}
 #| code-fold: true
