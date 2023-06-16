@@ -7,9 +7,23 @@
     "text": "About this site\n\n1 + 1\n\n[1] 2"
   },
   {
+    "objectID": "import_data_and_generate_report.html#import-data",
+    "href": "import_data_and_generate_report.html#import-data",
+    "title": "Import Data and Generate Report",
+    "section": "Import Data",
+    "text": "Import Data"
+  },
+  {
+    "objectID": "import_data_and_generate_report.html#generate-report",
+    "href": "import_data_and_generate_report.html#generate-report",
+    "title": "Import Data and Generate Report",
+    "section": "Generate Report",
+    "text": "Generate Report\nReport last updated r now().\n\n\n\n\n\n\n  \n    \n    \n      Timestamp\n      What city do you live in?\n      What state or province do you live in?\n      What country do you live in?\n    \n  \n  \n    2023-05-22 11:11:57\nPortland\nOregon\nUnited States\n    2023-05-22 13:54:52\nVancouver\nBritish Columbia\nCanada\n    2023-05-25 15:25:42\nNew York\nNew York\nUSA\n    2023-05-29 08:15:25\njember\njawa timur\nindonesia\n    2023-05-30 02:41:11\nCuritiba\nPR\nBrazil"
+  },
+  {
     "objectID": "index.html",
     "href": "index.html",
-    "title": "gha_websites_del",
+    "title": "GitHub Actions for Quarto Demo",
     "section": "",
     "text": "This is a Quarto website.\nTo learn more about Quarto websites visit https://quarto.org/docs/websites.\n\n1 + 1\n\n[1] 2"
   }
