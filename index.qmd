@@ -1,5 +1,5 @@
 ---
-title: "gha_websites_del"
+title: "GitHub Actions for Quarto Demo"
 ---
 
 This is a Quarto website.
