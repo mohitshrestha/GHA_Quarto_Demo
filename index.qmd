@@ -5,10 +5,10 @@ format:
   html:
     code-fold: true
     code-tools: true
+    code-summary: "Show the code"
 
 editor: visual
 execute: 
-  echo: false
   warning: false
   message: false
 ---
@@ -16,7 +16,8 @@ execute:
 ## Import Libraries/Packages
 
 ```{r}
-#| eval: true
+#| code-fold: true
+#| code-summary: "Show the code"
 
 library(tidyverse)
 library(googlesheets4)
@@ -25,8 +26,9 @@ library(gt)
 
 ## Import Data
 
-```{r filename="import_data.R"}
-#| eval: true
+```{r}
+#| code-fold: true
+#| code-summary: "Show the code"
 
 # The data is publicly available so we don't need to authenticate
 gs4_deauth()
@@ -42,6 +44,9 @@ survey_data |>
 Report last updated `r now()`.
 
 ```{r}
+#| code-fold: true
+#| code-summary: "Show the code"
+
 # The data is publicly available so we don't need to authenticate
 gs4_deauth()
 
